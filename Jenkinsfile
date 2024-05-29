@@ -16,9 +16,11 @@ pipeline{
             }
         }
         stage('SonarQube Analysis') {
-            def mvn = tool 'local_maven';
-            withSonarQubeEnv() {
-              sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=Jenkins-Sonar -Dsonar.projectName='Jenkins-Sonar'"
+            steps{
+                def mvn = tool 'local_maven';
+                withSonarQubeEnv() {
+                  sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=Jenkins-Sonar -Dsonar.projectName='Jenkins-Sonar'"
+                }
             }
         }
         stage ('Deploy to tomcat server') {
