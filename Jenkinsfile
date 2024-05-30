@@ -19,7 +19,7 @@ pipeline{
             steps{
                 def mvn = tool 'local_maven';
                 withSonarQubeEnv() {
-                  sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=Jenkins-Sonar -Dsonar.projectName='Jenkins-Sonar'"
+                  sh "${mvn}/bin/mvn clean verify sonar:sonar -Dsonar.projectKey=Jenkins-sonar -Dsonar.projectName='Jenkins-sonar'"
                 }
             }
         }
